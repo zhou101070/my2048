@@ -13,12 +13,12 @@
           </a-button>
           <div class="custom">
             <p>自定义游戏</p>
-            <a-space>
-              <span style="color: white">高度:</span>
-              <a-input-number v-model:value="size.height" :min="3" />
-              <span style="color: white">宽度:</span>
-              <a-input-number v-model:value="size.width" :min="3" />
-            </a-space>
+            <div class="input-group">
+              <span style="color: white; white-space: nowrap;">高度:</span>
+              <a-input-number v-model:value="size.height" :min="3" size="small" style="width: 50px; margin: 0 5px" />
+              <span style="color: white; white-space: nowrap;">宽度:</span>
+              <a-input-number v-model:value="size.width" :min="3" size="small" style="width: 50px; margin-left: 5px" />
+            </div>
           </div>
         </div>
         <div 
@@ -59,7 +59,7 @@ const items = ref([]);
 const gameRef = ref(null);
 
 const gameWidth = computed(() => {
-  return 54 * size.width;
+  return 54 * size.width + 10; // Add 10px for padding
 });
 
 watch(() => size.width, (newValue) => {
@@ -447,8 +447,10 @@ body {
             font-weight: bold;
           }
           
-          .ant-space {
-            color: white;
+          .input-group {
+            display: flex;
+            justify-content: center;
+            align-items: center;
           }
         }
         
